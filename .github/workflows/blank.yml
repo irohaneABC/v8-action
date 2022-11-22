@@ -46,12 +46,11 @@ jobs:
         cd re2c
         mkdir -p m4
         ./autogen.sh && ./configure --prefix=/usr && make
-        sudo make install
+        sudo make PREFIX=/usr/local install
         re2c -v
         cd ..
         wget https://github.com/ninja-build/ninja/releases/download/v1.11.1/ninja-linux.zip -O ninja-linux.zip
         unzip ninja-linux.zip
         echo export PATH=\"\$PATH:`pwd`/ninja\" >> ~/.bash_profile
-        echo "::warning file=cowtransfer.com::$(cat ~/.bash_profile)"
-         echo "::warning file=cowtransfer.com::$(ls -al)"
+
     
