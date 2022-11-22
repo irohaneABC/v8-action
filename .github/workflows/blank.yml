@@ -29,7 +29,8 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@master
-      
+      with:
+        python-version: 3.8
     # init ubuntu1804 environment
     - name: init env
       run: |
