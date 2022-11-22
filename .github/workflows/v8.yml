@@ -66,8 +66,9 @@ jobs:
         sudo make install
         re2c -v
         cd ..
-        git clone https://github.com/ninja-build/ninja.git
-        cd ninja && ./configure.py --bootstrap && cd ..
+        wget https://github.com/ninja-build/ninja/releases/download/v1.11.1/ninja-linux.zip -O ninja-linux.zip
+        unzip ninja-linux.zip
+        echo export PATH=\"\$PATH:`pwd`/ninja\" >> ~/.bash_profile
     
     - name: build v8
       run: |
