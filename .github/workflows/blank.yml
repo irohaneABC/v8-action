@@ -23,15 +23,15 @@ env:
 jobs:
   build:
     # The type of runner that the job will run on
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     if: github.event.repository.owner.id == github.event.sender.id 	
     
     steps:
     - name: Checkout
       uses: actions/checkout@master
       with:
-          python-version: '3.10' # 指定python版本
-          cache: 'poetry' # 设置缓存
+          python-version: '3.8'
+
           
     # init ubuntu1804 environment
     - name: init env
@@ -46,6 +46,7 @@ jobs:
         cd re2c
         mkdir -p m4
 
-        ./autogen.sh && ./configure --prefix=/usr
+        ./autogen.sh
+        ./configure --prefix=/usr
        
     
