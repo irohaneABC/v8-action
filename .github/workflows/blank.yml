@@ -47,6 +47,5 @@ jobs:
         mkdir -p m4
 
         ./autogen.sh && ./configure --prefix=/usr
-        make
        
     
