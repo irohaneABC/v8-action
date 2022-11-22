@@ -46,6 +46,7 @@ jobs:
         cd re2c
         mkdir -p m4
 
-        ./autogen.sh && ./configure --prefix=/usr && make
-        sudo make PREFIX=/usr/local install
-
+        ./autogen.sh && ./configure --prefix=/usr
+        make
+       
+    
