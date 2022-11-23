@@ -95,4 +95,21 @@ jobs:
         7z a v8.7z ./v8.zip -v2048m
     
        
-    
+    # upload depot_tools.zip to cowtransfer
+    - name: upload depot_tools
+      if: env.DEPOT_UPLOAD == 'true' && !cancelled()
+      run: |
+        curl -fsSL git.io/file-transfer | sh
+        ./transfer gof depot_tools.zip 2>&1 | tee cowtransfer.log
+        echo "::warning file=cowtransfer.com::$(cat cowtransfer.log | grep https)"
+   
+    # upload v8.zip to cowtransfer
+    - name: upload v8_src
+      if: env.SRC_UPLOAD == 'true' && !cancelled()
+      run: |
+        ls -l
+        curl -fsSL git.io/file-transfer | sh
+        ./transfer gof v8.7z.001 2>&1 | tee cowtransfer.log
+        echo "::warning file=cowtransfer.com::$(cat cowtransfer.log | grep https)"
+        ./transfer gof v8.7z.002 2>&1 | tee cowtransfer.log
+        echo "::warning file=cowtransfer.com::$(cat cowtransfer.log | grep https)"
